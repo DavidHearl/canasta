@@ -1,0 +1,46 @@
+body {
+    background-color: rgb(105, 105, 105);
+}
+
+#hand-location {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.center-table {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#pack, #throw {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    height: 100px;
+    width: 100px;
+    border-radius: 4px;
+    margin: 4px;
+}
+
+#pack {
+    background-color: rgb(173, 227, 173);
+}
+
+#throw {
+    background-color: rgb(227, 173, 173);
+}
+
+.hand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    height: 100px;
+    width: 100px;
+    background-color: rgb(173, 213, 227);
+    border-radius: 4px;
+    margin: 4px;
+}

@@ -1,2 +1,1 @@
-# canasta
-Canasta Card Game
+python -m http.server
