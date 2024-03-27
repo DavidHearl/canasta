@@ -2,7 +2,7 @@ body {
     background-color: rgb(105, 105, 105);
 }
 
-#hand-location {
+#player1s-hand, #player2s-hand, #player3s-hand, #player4s-hand {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -33,7 +33,7 @@ body {
     background-color: rgb(227, 173, 173);
 }
 
-.hand {
+.hand1, .hand2, .hand3, .hand4{
     display: flex;
     justify-content: center;
     align-items: center;

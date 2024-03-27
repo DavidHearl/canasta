@@ -1,64 +1,111 @@
-// Define the ranks and suits of the cards
-const cards = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-const suits = ["♠️", "♥️", "♦️", "♣️"];
-const joker = ["Joker-Red", "Joker-Black"];
-
-// Define the number of players
-const player1_hand = [];
-const player2_hand = [];
-const player3_hand = [];
-const player4_hand = [];
-
-// Create an empty array to store the deck of cards
-const deck = [];
-
-// Generate the deck of cards
-for (let i = 0; i < 2; i++) {
-	for (const suit of suits) {
-		for (const card of cards) {
-			deck.push(`${card}${suit}`);
-		}
-	}
-}
-
-// Add 2 red jokers and 2 black jokers
-deck.push(...joker);
-deck.push(...joker);
-
-// Shuffle the deck of cards
-for (let i = deck.length - 1; i > 0; i--) {
-	const j = Math.floor(Math.random() * (i + 1));
-	[deck[i], deck[j]] = [deck[j], deck[i]];
-}
-
-// Give each player 11 cards from the top of the deck
-for (let i = 0; i < 11; i++) {
-	player1_hand.push(deck.pop());
-	player2_hand.push(deck.pop());
-	player3_hand.push(deck.pop());
-	player4_hand.push(deck.pop());
-}
-
-// Print the shuffled deck of cards
-console.log(deck);
-
-// Send the first value from the deck to the throw div
-const throwDiv = document.getElementById("throw-value");
-throwDiv.textContent = deck[0];
-deck.shift();
-
-// Send the first value from the deck to the pack div
-const packDiv = document.getElementById("pack-value");
-packDiv.textContent = deck[0];
-deck.shift();
-
-// Create divs with the class of "hand" for each value in player1
-const hand_location = document.getElementById("hand-location");
-for (const card of player1_hand) {
-	const newDiv = document.createElement("div");
-	newDiv.classList.add("hand");
-	newDiv.textContent = card;
-	hand_location.appendChild(newDiv);
-}
-
-
+// Create a list of cards
+export const deck = [
+    {rank: "Ace", suit: "Spades", value: 20, type: "normal"},
+    {rank: "Ace", suit: "Hearts", value: 20, type: "normal"},
+    {rank: "Ace", suit: "Diamonds", value: 20, type: "normal"},
+    {rank: "Ace", suit: "Clubs", value: 20, type: "normal"},
+    {rank: "Ace", suit: "Spades", value: 20, type: "normal"},
+    {rank: "Ace", suit: "Hearts", value: 20, type: "normal"},
+    {rank: "Ace", suit: "Diamonds", value: 20, type: "normal"},
+    {rank: "Ace", suit: "Clubs", value: 20, type: "normal"},
+    {rank: "2", suit: "Spades", value: 20, type: "wild"},
+    {rank: "2", suit: "Hearts", value: 20, type: "wild"},
+    {rank: "2", suit: "Diamonds", value: 20, type: "wild"},
+    {rank: "2", suit: "Clubs", value: 20, type: "wild"},
+    {rank: "2", suit: "Spades", value: 20, type: "wild"},
+    {rank: "2", suit: "Hearts", value: 20, type: "wild"},
+    {rank: "2", suit: "Diamonds", value: 20, type: "wild"},
+    {rank: "2", suit: "Clubs", value: 20, type: "wild"},
+    {rank: "3", suit: "Spades", value: 5, type: "black-three"},
+    {rank: "3", suit: "Hearts", value: 100, type: "red-three"},
+    {rank: "3", suit: "Diamonds", value: 100, type: "red-three"},
+    {rank: "3", suit: "Clubs", value: 5, type: "black-three"},
+    {rank: "3", suit: "Spades", value: 5, type: "black-three"},
+    {rank: "3", suit: "Hearts", value: 100, type: "red-three"},
+    {rank: "3", suit: "Diamonds", value: 100, type: "red-three"},
+    {rank: "3", suit: "Clubs", value: 5, type: "black-three"},
+    {rank: "4", suit: "Spades", value: 5, type: "normal"},
+    {rank: "4", suit: "Hearts", value: 5, type: "normal"},
+    {rank: "4", suit: "Diamonds", value: 5, type: "normal"},
+    {rank: "4", suit: "Clubs", value: 5, type: "normal"},
+    {rank: "4", suit: "Spades", value: 5, type: "normal"},
+    {rank: "4", suit: "Hearts", value: 5, type: "normal"},
+    {rank: "4", suit: "Diamonds", value: 5, type: "normal"},
+    {rank: "4", suit: "Clubs", value: 5, type: "normal"},
+    {rank: "5", suit: "Spades", value: 5, type: "normal"},
+    {rank: "5", suit: "Hearts", value: 5, type: "normal"},
+    {rank: "5", suit: "Diamonds", value: 5, type: "normal"},
+    {rank: "5", suit: "Clubs", value: 5, type: "normal"},
+    {rank: "5", suit: "Spades", value: 5, type: "normal"},
+    {rank: "5", suit: "Hearts", value: 5, type: "normal"},
+    {rank: "5", suit: "Diamonds", value: 5, type: "normal"},
+    {rank: "5", suit: "Clubs", value: 5, type: "normal"},
+    {rank: "6", suit: "Spades", value: 5, type: "normal"},
+    {rank: "6", suit: "Hearts", value: 5, type: "normal"},
+    {rank: "6", suit: "Diamonds", value: 5, type: "normal"},
+    {rank: "6", suit: "Clubs", value: 5, type: "normal"},
+    {rank: "6", suit: "Spades", value: 5, type: "normal"},
+    {rank: "6", suit: "Hearts", value: 5, type: "normal"},
+    {rank: "6", suit: "Diamonds", value: 5, type: "normal"},
+    {rank: "6", suit: "Clubs", value: 5, type: "normal"},
+    {rank: "7", suit: "Spades", value: 5, type: "normal"},
+    {rank: "7", suit: "Hearts", value: 5, type: "normal"},
+    {rank: "7", suit: "Diamonds", value: 5, type: "normal"},
+    {rank: "7", suit: "Clubs", value: 5, type: "normal"},
+    {rank: "7", suit: "Spades", value: 5, type: "normal"},
+    {rank: "7", suit: "Hearts", value: 5, type: "normal"},
+    {rank: "7", suit: "Diamonds", value: 5, type: "normal"},
+    {rank: "7", suit: "Clubs", value: 5, type: "normal"},
+    {rank: "8", suit: "Spades", value: 10, type: "normal"},
+    {rank: "8", suit: "Hearts", value: 10, type: "normal"},
+    {rank: "8", suit: "Diamonds", value: 10, type: "normal"},
+    {rank: "8", suit: "Clubs", value: 10, type: "normal"},
+    {rank: "8", suit: "Spades", value: 10, type: "normal"},
+    {rank: "8", suit: "Hearts", value: 10, type: "normal"},
+    {rank: "8", suit: "Diamonds", value: 10, type: "normal"},
+    {rank: "8", suit: "Clubs", value: 10, type: "normal"},
+    {rank: "9", suit: "Spades", value: 10, type: "normal"},
+    {rank: "9", suit: "Hearts", value: 10, type: "normal"},
+    {rank: "9", suit: "Diamonds", value: 10, type: "normal"},
+    {rank: "9", suit: "Clubs", value: 10, type: "normal"},
+    {rank: "9", suit: "Spades", value: 10, type: "normal"},
+    {rank: "9", suit: "Hearts", value: 10, type: "normal"},
+    {rank: "9", suit: "Diamonds", value: 10, type: "normal"},
+    {rank: "9", suit: "Clubs", value: 10, type: "normal"},
+    {rank: "10", suit: "Spades", value: 10, type: "normal"},
+    {rank: "10", suit: "Hearts", value: 10, type: "normal"},
+    {rank: "10", suit: "Diamonds", value: 10, type: "normal"},
+    {rank: "10", suit: "Clubs", value: 10, type: "normal"},
+    {rank: "10", suit: "Spades", value: 10, type: "normal"},
+    {rank: "10", suit: "Hearts", value: 10, type: "normal"},
+    {rank: "10", suit: "Diamonds", value: 10, type: "normal"},
+    {rank: "10", suit: "Clubs", value: 10, type: "normal"},
+    {rank: "Jack", suit: "Spades", value: 10, type: "normal"},
+    {rank: "Jack", suit: "Hearts", value: 10, type: "normal"},
+    {rank: "Jack", suit: "Diamonds", value: 10, type: "normal"},
+    {rank: "Jack", suit: "Clubs", value: 10, type: "normal"},
+    {rank: "Jack", suit: "Spades", value: 10, type: "normal"},
+    {rank: "Jack", suit: "Hearts", value: 10, type: "normal"},
+    {rank: "Jack", suit: "Diamonds", value: 10, type: "normal"},
+    {rank: "Jack", suit: "Clubs", value: 10, type: "normal"},
+    {rank: "Queen", suit: "Spades", value: 10, type: "normal"},
+    {rank: "Queen", suit: "Hearts", value: 10, type: "normal"},
+    {rank: "Queen", suit: "Diamonds", value: 10, type: "normal"},
+    {rank: "Queen", suit: "Clubs", value: 10, type: "normal"},
+    {rank: "Queen", suit: "Spades", value: 10, type: "normal"},
+    {rank: "Queen", suit: "Hearts", value: 10, type: "normal"},
+    {rank: "Queen", suit: "Diamonds", value: 10, type: "normal"},
+    {rank: "Queen", suit: "Clubs", value: 10, type: "normal"},
+    {rank: "King", suit: "Spades", value: 10, type: "normal"},
+    {rank: "King", suit: "Hearts", value: 10, type: "normal"},
+    {rank: "King", suit: "Diamonds", value: 10, type: "normal"},
+    {rank: "King", suit: "Clubs", value: 10, type: "normal"},
+    {rank: "King", suit: "Spades", value: 10, type: "normal"},
+    {rank: "King", suit: "Hearts", value: 10, type: "normal"},
+    {rank: "King", suit: "Diamonds", value: 10, type: "normal"},
+    {rank: "King", suit: "Clubs", value: 10, type: "normal"},
+    {rank: "Joker", suit: "Spades", value: 50, type: "wild"},
+    {rank: "Joker", suit: "Hearts", value: 50, type: "wild"},
+    {rank: "Joker", suit: "Diamonds", value: 50, type: "wild"},
+    {rank: "Joker", suit: "Clubs", value: 50, type: "wild"}
+];

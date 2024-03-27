@@ -1,10 +1,12 @@
-// // Assuming you have an array called "deck" containing the card values
-// const deck = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"];
+// import { deck, player1_hand, player2_hand, player3_hand, player4_hand } from "./deal_cards.js";
 
-// // Assuming you have a div element with the id "pack"
-// const packDiv = document.getElementById("pack");
 
-// // Set the text of the pack div to the first value from the deck
-// packDiv.textContent = deck[0];
 
-// console.log(deck[0]);
+
+
+
+
+
+
+
+
