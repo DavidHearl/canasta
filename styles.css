@@ -2,45 +2,64 @@ body {
     background-color: rgb(105, 105, 105);
 }
 
-#player1s-hand, #player2s-hand, #player3s-hand, #player4s-hand {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
+/* Center the pack and deck */
 .center-table {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-#pack, #throw {
+#player0-hand,
+#player1-hand,
+#player2-hand,
+#player3-hand {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#deck, #pack {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
     height: 100px;
-    width: 100px;
-    border-radius: 4px;
-    margin: 4px;
+    width: 75px;
+    border-radius: 12px;
+    margin: 8px;
+    padding: 4px;
+    border: 1px solid black;
 }
 
-#pack {
+#deck {
     background-color: rgb(173, 227, 173);
 }
 
-#throw {
+#deck:hover {
+    background-color: rgb(63, 151, 63);
+}
+
+#pack {
     background-color: rgb(227, 173, 173);
 }
 
-.hand1, .hand2, .hand3, .hand4{
+#pack:hover {
+    background-color: rgb(151, 63, 63);
+}
+
+.red {
+    color: red;
+}
+
+.card-button{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
     height: 100px;
-    width: 100px;
-    background-color: rgb(173, 213, 227);
-    border-radius: 4px;
-    margin: 4px;
+    width: 75px;
+    background-color: rgb(213, 227, 232);
+    border-radius: 12px;
+    margin: 8px;
+    border: 1px solid black;
 }

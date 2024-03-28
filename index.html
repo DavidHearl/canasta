@@ -5,23 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canasta</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="deal_cards.js" type="module"></script>
     <script src="script.js" type="module"></script>
 </head>
 <body>
 
-<h2>Player 1s Turn</h2>
+<h2 id="players-turn"></h2>
 
 <div class="center-table">
-    <button id="throw">
-        <p id="throw-value"></p>
-    </button>   
     <button id="pack">
-        <p id="pack-value">Draw Card</p>
+        <p id="pack-value"></p>
+    </button>   
+    <button id="deck">
+        <p id="deck-value">Draw Card</p>
     </button>
 </div>
 
-<div id="hands"></div>
+<div id="players-hands"></div>
 
 </body>
 </html>
