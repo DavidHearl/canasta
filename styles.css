@@ -2,13 +2,76 @@ body {
     background-color: rgb(105, 105, 105);
 }
 
+.table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rosybrown;
+    width: 75%;
+}
+
+.row-1, 
+.row-2,
+.row-3 {
+    display: flex;
+}
+
+.laying {
+    display: flex;
+    background-color: rgb(133, 47, 47);
+    width: 50%;
+}
+
+.corner {
+    width: 125px;
+    height: 125px;
+    background-color: white;
+}
+
+.center {
+    width: 1000px;
+    height: 1000px;
+    background-color: rgb(122, 58, 141);
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
+    width: 125px;
+    height: 1000px;
+    background-color: rgb(58, 135, 141);
+}
+
+.horizontal {
+    display: flex;
+    width: 1000px;
+    height: 125px;
+    background-color: rgb(98, 141, 58);
+}
+
+.horizontal-card-placeholder {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 8px;
+}
+
+.vertical-card-placeholder {
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 8px;
+}
+
 /* Center the pack and deck */
-.center-table {
+.center {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
+/*
 #player0-hand,
 #player1-hand,
 #player2-hand,
@@ -62,4 +125,4 @@ body {
     border-radius: 12px;
     margin: 8px;
     border: 1px solid black;
-}
+} */
