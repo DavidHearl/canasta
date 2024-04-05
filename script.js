@@ -90,34 +90,53 @@ function renderHand() {
 }
 
 function drawCard() {
-    let deckElement = document.getElementById("deck");
-    deckElement.addEventListener("click", function() {
-        console.log("Deck before draw: ", deck[0]);
-        players[playersTurn].hand.push(deck.pop());
-        console.log("Player 0's Hand: ", players[0].hand);
-        console.log("Deck after draw: ", deck[0]);
-        sortHand();
-        renderHand();
-        nextTurn();
+    console.log("Drawn Card: ", deck[deck.length - 1]);
+    players[playersTurn].hand.push(deck.pop());
+    // console.log("Player 0's Hand: ", players[0].hand);
+    console.log("Deck after draw: ", deck);
+    sortHand();
+    renderHand();
+}
+
+function throwCard() {
+    // Get the div for the current player's hand
+    let handContainer = document.getElementById(`player-${playersTurn}`);
+
+    // Add event listener to each card button in the hand
+    handContainer.addEventListener("click", function(event) {
+        // Check if the clicked element is a card button
+        if (event.target.classList.contains("card-button")) {
+            // Get the index of the clicked card in the player's hand
+            let cardIndex = Array.from(handContainer.children).indexOf(event.target);
+
+            // Remove the clicked card from the player's hand and add it to the pack
+            let thrownCard = players[playersTurn].hand.splice(cardIndex, 1)[0];
+            pack.push(thrownCard);
+
+            // Update the pack value in the UI
+            const packDiv = document.getElementById("pack-value");
+            packDiv.textContent = pack[pack.length - 1]?.rank + pack[pack.length - 1]?.suit;
+
+            // Render the updated hand
+            renderHand();
+
+            // Move to the next player's turn
+            nextTurn();
+        }
     });
 }
 
-// function throwCard() {
-//     document.addEventListener("click", function() {
-//         console.log("test")
-//     });
-//     nextTurn();
-// }
-
 function nextTurn() {
-    console.log("Player's Turn: ", playersTurn);
+    // console.log("Player's Turn: ", playersTurn);
     playersTurn = playersTurn + 1
-    console.log("Players Turn: ", playersTurn);
+    // console.log("Players Turn: ", playersTurn);
     if (playersTurn > players.length - 1) {
         playersTurn = 0;
     }
 }
 
+// Game
 setupGame();
-drawCard();
-// throwCard();
+
+// Add event listener to the deck
+document.getElementById("deck").addEventListener("click", drawCard);
