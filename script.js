@@ -102,8 +102,8 @@ function throwCard() {
     // Get the div for the current player's hand
     let handContainer = document.getElementById(`player-${playersTurn}`);
 
-    // Add event listener to each card button in the hand
-    handContainer.addEventListener("click", function(event) {
+    // Define the event listener function
+    function cardClickHandler(event) {
         // Check if the clicked element is a card button
         if (event.target.classList.contains("card-button")) {
             // Get the index of the clicked card in the player's hand
@@ -122,8 +122,14 @@ function throwCard() {
 
             // Move to the next player's turn
             nextTurn();
+
+            // Remove the event listener after a card has been clicked
+            handContainer.removeEventListener("click", cardClickHandler);
         }
-    });
+    }
+
+    // Add event listener to each card button in the hand
+    handContainer.addEventListener("click", cardClickHandler);
 }
 
 function pickUpPack() {
@@ -172,3 +178,6 @@ document.getElementById("deck").addEventListener("click", drawCard);
 
 // Add event listener to the pack
 document.getElementById("pack").addEventListener("click", pickUpPack);
+
+// Add event listener to the throw button
+document.getElementById("throw-card").addEventListener("click", throwCard);
