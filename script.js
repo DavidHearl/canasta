@@ -126,6 +126,35 @@ function throwCard() {
     });
 }
 
+function pickUpPack() {
+    // Get the value for the last card in the pack
+    var packCard = pack[pack.length - 1];
+    console.log("Pack Card: ", packCard);
+
+    // Get the rank values from all the cardss in the players hand
+    const rankValues = players[playersTurn].hand.map(card => card.rank);
+    console.log("Rank Values: ", rankValues);
+    
+    // Check if there are 2 instances of the pack card in the rankValues
+    if (rankValues.filter(rank => rank === packCard.rank).length === 2) {
+        // Add the pack to the current player's hand
+        players[playersTurn].hand = players[playersTurn].hand.concat(pack);
+        pack = [];
+
+        // Update the pack value in the UI
+        const packDiv = document.getElementById("pack-value");
+        packDiv.textContent = "";
+
+        // Render the updated hand
+        renderHand();
+
+        // Move to the next player's turn
+        nextTurn();
+    } else {
+        console.log("There are not 2 instances of the pack card in the player's hand.");
+    }
+}
+
 function nextTurn() {
     // console.log("Player's Turn: ", playersTurn);
     playersTurn = playersTurn + 1
@@ -140,3 +169,6 @@ setupGame();
 
 // Add event listener to the deck
 document.getElementById("deck").addEventListener("click", drawCard);
+
+// Add event listener to the pack
+document.getElementById("pack").addEventListener("click", pickUpPack);
