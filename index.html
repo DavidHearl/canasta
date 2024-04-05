@@ -5,42 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canasta</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- <script src="script.js" type="module"></script> -->
+    <script src="script.js" type="module"></script>
 </head>
 <body>
 
 <div class="window">
-    <div class="table">
+    <div id="table">
         <div class="row-1">
             <div class="corner"></div>
-            <div class="horizontal">
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
+            <div class="horizontal" id="player-2">
+                <!-- Players 1s Cards go here -->
             </div>
             <div class="corner"></div>
         </div>
+
         <div class="row-2">
-            <div class="vertical">
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
+            <div class="vertical" id="player-1">
+                <!-- Player 2s Cards go here -->
             </div>
             <div class="center">
                 <button id="pack">
@@ -50,41 +31,27 @@
                     <p id="deck-value">Draw Card</p>
                 </button>
             </div>
-            <div class="vertical">
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
-                <div class="vertical-card-placeholder"></div>
+            <div class="vertical" id="player-3">
+                <!-- Player 3s Cards go here -->
             </div>
         </div>
+
         <div class="row-3">
             <div class="corner"></div>
-            <div class="horizontal">
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
-                <div class="horizontal-card-placeholder"></div>
+            <div class="horizontal" id="player-0">
+                <!-- Players 0s Cards go here -->
             </div>
             <div class="corner"></div>
         </div>
     </div>
 
-    <div class="laying">
+    <div id="laying">
+        <div id="red-team">
 
+        </div>
+        <div id="blue-team">
+
+        </div>
     </div>
 </div>
 

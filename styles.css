@@ -2,13 +2,36 @@ body {
     background-color: rgb(105, 105, 105);
 }
 
-.table {
+.window {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+#table {
+    display: flex;
+    flex-direction: column;
+    background-color: rosybrown;
+}
+
+#laying {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rosybrown;
-    width: 75%;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(173, 227, 173);
+}
+
+#red-team,
+#blue-team {
+    height: 501px;
+    width: 100%;
+}
+
+#red-team {
+    background-color: rgb(255, 212, 221);
 }
 
 .row-1, 
@@ -17,51 +40,29 @@ body {
     display: flex;
 }
 
-.laying {
-    display: flex;
-    background-color: rgb(133, 47, 47);
-    width: 50%;
-}
-
 .corner {
-    width: 125px;
-    height: 125px;
+    width: 100px;
+    height: 100px;
     background-color: white;
 }
 
-.center {
-    width: 1000px;
-    height: 1000px;
-    background-color: rgb(122, 58, 141);
+.vertical,
+.horizontal {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .vertical {
-    display: flex;
     flex-direction: column;
-    width: 125px;
-    height: 1000px;
-    background-color: rgb(58, 135, 141);
+    width: 100px;
+    height: 802px;
+    background-color: rgb(209, 223, 255);
 }
 
 .horizontal {
-    display: flex;
-    width: 1000px;
-    height: 125px;
-    background-color: rgb(98, 141, 58);
-}
-
-.horizontal-card-placeholder {
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 4px;
-    margin: 8px;
-}
-
-.vertical-card-placeholder {
-    height: 100%;
-    border: 1px solid black;
-    border-radius: 4px;
-    margin: 8px;
+    width: 802px;
+    height: 100px;
+    background-color: rgb(255, 212, 221);
 }
 
 /* Center the pack and deck */
@@ -69,9 +70,15 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
+    width: 780px;
+    height: 780px;
+    background-color: rgb(58 141 113);
+    border: 1px solid black;
+    border-radius: 32px;
+    margin: 10px;
 }
 
-/*
 #player0-hand,
 #player1-hand,
 #player2-hand,
@@ -86,8 +93,8 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 1rem;
-    height: 100px;
-    width: 75px;
+    height: 150px;
+    width: 100px;
     border-radius: 12px;
     margin: 8px;
     padding: 4px;
@@ -118,11 +125,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1rem;
-    height: 100px;
-    width: 75px;
+    font-size: 1.05rem;
     background-color: rgb(213, 227, 232);
     border-radius: 12px;
-    margin: 8px;
+    margin: 4px;
     border: 1px solid black;
-} */
+}
+
+.card-button:hover {
+    background-color: rgb(72, 72, 72);
+}
+
+.orientation-1,
+.orientation-3 {
+    height: 100%;
+}
+
+.orientation-0,
+.orientation-2 {
+    width: 100%;
+}

@@ -8,6 +8,7 @@ const players = [
     {player: "Player 2", hand: [], handValue: 0},
     {player: "Player 3", hand: [], handValue: 0},
 ];
+var playersTurn = 0;
 
 function setupGame() {
     // Shuffle the deck of cards and log the result
@@ -15,6 +16,7 @@ function setupGame() {
         const j = Math.floor(Math.random() * (i + 1));
         [deck[i], deck[j]] = [deck[j], deck[i]];
     }
+    console.log("Shuffled Deck: ", deck);
 
     // Give each player 11 cards from the top of the deck
     for (let player = 0; player < players.length; player++) {
@@ -26,16 +28,17 @@ function setupGame() {
 
     // Log the players hands and the remaining deck
     for (let i = 0; i < players.length; i++) {
+        // Print the value of the players hand
         console.log(`Player ${i}'s Hand:`, players[i].hand);
     }
+    
+    // Print the deck after dealing
     console.log("Deck after deal: ", deck);
 
-    // Take the top card from the deck and place it in the throw pile
+    // Pop, remove the last value from the deck
+    // Push, add the value that was removed from the deck to the pack
+    // Value removed was deck.length - 1
     pack.push(deck.pop());
-
-    // Print the pack and the deck
-    console.log("First Pack after deal: ", pack);
-    console.log("First Deck after deal: ", deck);
 
     // Populate the pack div with the value from the pack
     const packDiv = document.getElementById("pack-value");
@@ -44,12 +47,11 @@ function setupGame() {
     // Check if the last card of the pack is a wild card
     // If it is, draw another card from the deck and add it to the pack
     if (pack[0]?.type === "wild" || pack[0]?.type === "red-three") {
+        console.log("The frist card was a wild card", pack[0]);
         pack.push(deck.pop());
+        packDiv.textContent = pack[pack.length - 1]?.rank + pack[pack.length - 1]?.suit;
+        console.log("The new pack is: ", pack);
     }
-
-    // Print the pack and the deck
-    console.log("Second Pack after deal: ", pack);
-    console.log("Second Deck after deal: ", deck);
 
     renderHand();
 }
@@ -62,21 +64,13 @@ function sortHand() {
 }
 
 function renderHand() {
-    // Get the container for the players hands
-    const handsDiv = document.getElementById("players-hands");
-
     // Create a loop for each player
     for (let x = 0; x < players.length; x++) {
-        // Create a div for each player's hand
-        let playersHand = document.createElement("div");
+        // Get the div for each players hand
+        let handContainer = document.getElementById(`player-${x}`);
 
-        // Add an id to the players hand
-        playersHand.id = `player${x}-hand`;
-        handsDiv.appendChild(playersHand);
-
-        // Get the players hand div
-        let playerHandDiv = document.getElementById(`player${x}-hand`);
-        playerHandDiv.innerHTML = "";
+        // Clear the handContainer before rendering new elements
+        handContainer.innerHTML = '';
 
         // Create a loop to render each card in the players hand
         for (let y = 0; y < players[x].hand.length; y++) {
@@ -85,11 +79,12 @@ function renderHand() {
 
             // Add classes to the card
             card.classList.add("card-button");
+            card.classList.add(`orientation-${x}`);
             card.classList.add(players[x].hand[y].color);
 
             // Add the text content to the card and push
             card.textContent = players[x].hand[y].rank + " " + players[x].hand[y].suit;
-            playerHandDiv.appendChild(card);
+            handContainer.appendChild(card);
         }
     }
 }
@@ -98,13 +93,31 @@ function drawCard() {
     let deckElement = document.getElementById("deck");
     deckElement.addEventListener("click", function() {
         console.log("Deck before draw: ", deck[0]);
-        players[0].hand.push(deck.pop());
+        players[playersTurn].hand.push(deck.pop());
         console.log("Player 0's Hand: ", players[0].hand);
         console.log("Deck after draw: ", deck[0]);
         sortHand();
         renderHand();
+        nextTurn();
     });
+}
+
+// function throwCard() {
+//     document.addEventListener("click", function() {
+//         console.log("test")
+//     });
+//     nextTurn();
+// }
+
+function nextTurn() {
+    console.log("Player's Turn: ", playersTurn);
+    playersTurn = playersTurn + 1
+    console.log("Players Turn: ", playersTurn);
+    if (playersTurn > players.length - 1) {
+        playersTurn = 0;
+    }
 }
 
 setupGame();
 drawCard();
+// throwCard();
