@@ -170,6 +170,40 @@ function nextTurn() {
     }
 }
 
+function layCard() {
+    // Get the div for the current player's hand
+    let handContainer = document.getElementById(`player-${playersTurn}`);
+
+    // Define the event listener function
+    function cardClickHandler(event) {
+        // Check if the clicked element is a card button
+        if (event.target.classList.contains("card-button")) {
+            // Get the index of the clicked card in the player's hand
+            let cardIndex = Array.from(handContainer.children).indexOf(event.target);
+
+            // Remove the clicked card from the player's hand and add it to the pack
+            let thrownCard = players[playersTurn].hand.splice(cardIndex, 1)[0];
+            pack.push(thrownCard);
+
+            // Update the pack value in the UI
+            const packDiv = document.getElementById("pack-value");
+            packDiv.textContent = pack[pack.length - 1]?.rank + pack[pack.length - 1]?.suit;
+
+            // Render the updated hand
+            renderHand();
+
+            // Move to the next player's turn
+            nextTurn();
+
+            // Remove the event listener after a card has been clicked
+            handContainer.removeEventListener("click", cardClickHandler);
+        }
+    }
+
+    // Add event listener to each card button in the hand
+    handContainer.addEventListener("click", cardClickHandler);
+}
+
 // Game
 setupGame();
 
@@ -181,3 +215,6 @@ document.getElementById("pack").addEventListener("click", pickUpPack);
 
 // Add event listener to the throw button
 document.getElementById("throw-card").addEventListener("click", throwCard);
+
+// Add event listener to the lay button
+document.getElementById("lay-card").addEventListener("click", layCard);
